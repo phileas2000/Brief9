@@ -9,7 +9,8 @@ data.columns   = data.columns.str.replace(' ','_')
 print(data.columns)
 data["Valeur_fonciere"] = data["Valeur_fonciere"].str.replace(',','.')
 data = data.astype({"Valeur_fonciere": float})
-data = data[["Valeur_fonciere","Code_voie","Type_de_voie","Code_postal","Commune","Surface_reelle_bati","Nombre_pieces_principales","Surface_terrain"]]
+data = data[['Valeur_fonciere','Code_voie', 'Type_de_voie', 'Code_postal', 'Commune',
+'Surface_reelle_bati', 'Nombre_pieces_principales', 'Surface_terrain']]
 print("DROPNA")
 print(len(data))
 print(data.describe())
