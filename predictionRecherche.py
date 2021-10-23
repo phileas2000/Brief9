@@ -14,6 +14,7 @@ from sklearn.metrics import r2_score
 from scipy.stats import uniform as sp_randFloat
 from scipy.stats import randint as sp_randInt
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import GridSearchCV
 from  sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import ElasticNet
 from sklearn.linear_model import LinearRegression
@@ -40,6 +41,16 @@ def split_data(data):
     X = data.drop(columns= ( ["Valeur_fonciere","index"]))
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.01, random_state=15)
     return X_train, X_test, y_train, y_test
+
+def hyperparametre_randomforest(X_train,y_train,X_test):   
+    model = RandomForestRegressor(n_estimators=1000,max_depth=150,min_impurity_decrease=0.1)
+    model.fit(X_train, y_train)
+    distributions = dict(n_estimators=sp_randInt(100,2000),
+    max_depth=sp_randInt(100,2000),min_impurity_decrease=sp_randFloat(0.1,0))
+    clf = RandomizedSearchCV( RandomForestRegressor(),distributions,random_state=110,n_iter=1)
+    search = clf.fit(X_train, y_train)
+    print("Meilleurs paramètres :"+ str(search.best_params))
+    return model.predict(X_test)
 
 
 def random_forest(X_train,y_train,X_test):   
@@ -110,7 +121,7 @@ data = sample(conn)
 print(data.columns)
 for e in ["Code_postal","Commune","Code_voie",'Type_de_voie']:
     data[e] = decategoriser(e) 
-scaler = StandardScaler() 
+#scaler = StandardScaler() 
 #scaler.fit(data)
 print(data.columns)
 print(data[["Code_postal","Commune","Code_voie"]])
@@ -121,12 +132,12 @@ X_train = data[0] # scaler.fit_transform()
 X_test = data[1] #scaler.fit_transform()
 y_train = data[2]
 y_test = data[3]
-
+hyperparametre_randomforest(X_train,y_train,X_test)
 #graph(prediction,y_test)
 n_split = 3
 kf = KFold(n_splits=n_split)
 moy = 0
-for train_index,test_index in kf.split(dataUnif.values):
+'''for train_index,test_index in kf.split(dataUnif.values):
       
       X_train, X_test = dataUnif.values[train_index], dataUnif.values[test_index]
       y_train, y_test = dataUnif["Valeur_fonciere"].values[train_index], dataUnif["Valeur_fonciere"].values[test_index]
@@ -134,14 +145,10 @@ for train_index,test_index in kf.split(dataUnif.values):
       print("Prediction: "+str(errorKfold(prediction,y_test)))
       moy += errorKfold(prediction,y_test)
 print("Précision moyenne: " + str(moy/n_split))
-#prediction = modele(X_train,y_train,X_train)
-#print("Sans cross_validation: ")
-#error(prediction,y_train)
-
-#fh = open("modele.ser","wb")
-#p = pickle.Pickler(fh,pickle.HIGHEST_PROTOCOL)
-#p.dump(modele)
-#fh.close()
+prediction = modele(X_train,y_train,X_test)
+print("Sans cross_validation: ")
+error(prediction,y_test)
+assert errorKfold(prediction,y_test)'''
 
 
 

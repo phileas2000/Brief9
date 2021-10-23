@@ -3,13 +3,7 @@ import sqlite3 as sql
 
 def decategoriser(colonne):
     dataMap = pd.read_sql_query("SELECT "+str(colonne)+" ,AVG(Valeur_fonciere) as Valeur_fonciere FROM Data GROUP BY "+str(colonne)+" ORDER BY AVG(Valeur_fonciere)",conn)
-    #print(dataMap["Valeur_fonciere"].drop_duplicates())
-    serie = dataMap["Valeur_fonciere"].squeeze()
-    print(dataMap["Valeur_fonciere"].values)
-    dictMap =  pd.Series(dataMap["Valeur_fonciere"].values ,index=dataMap[colonne]).to_dict()
-    print(dictMap)
-    
-    
+    dictMap =  pd.Series(dataMap["Valeur_fonciere"].values ,index=dataMap[colonne])
     return pd.to_numeric(data[colonne].replace(dictMap))
 
 conn  = sql.connect("immobilier.db")
