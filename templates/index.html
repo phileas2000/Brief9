@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price</title>    
+    <link rel="stylesheet" href="static\css\style.css">
+</head>
+
+<body bgcolor="skyblue">
+    
+
+<p align="center" class="heading"><b>DVF prediction</b></p>
+
+<div align="center">
+    
+    <form action="{{ url_for('predict')}}" method="POST">
+        
+
+        <div class="b"><b>Property</b><br>
+            <select name="Property" class="a">
+            <option value="Alone">alone</option>
+            <option value="Building">Building</option>
+            <option value="subdivision">subdivision</option>
+            <option value="mall">mall</option>
+            <option value="Land">Land</option>
+            <option value="mixed">mixed</option></select></div>
+
+
+        
+        <div class="b"><b>appartment</b><br>
+            <input class="a" type="Number" name ="appartment" value="0" maxlength="100" required="required"></div>
+
+        <div class="b"><b>House</b><br>
+            <input type="Number" name="House" required="required" value="0" class="a"></div>
+
+        <div class="b"><b>Commercial</b><br>
+            <input type="Number" name="Commercial" value="0" required="required" class="a"></div>
+
+        <div class="b"><b>Land</b><br>
+            <input type="Number" name="Land" value="0" required="required" class="a"></div>
+
+        <div class="b"><b>dependency</b><br>
+            <input type="Number" name="dependency" value="0" required="required" class="a"></div>
+
+        <div class="b"><b>builtsurface</b><br>
+            <input type="Number" name="builtsurface" value="0" required="required" class="a"></div>
+
+        <div class="b"><b>landsurface</b><br>
+            <input type="Number" name="landsurface" value="0" required="required" class="a"></div>
+        
+        <div class="b"><b>Numberofpieces</b><br>
+            <input type="Number" name="Numberofpieces" value="0" required="required" class="a"></div>
+
+        <div class="c" align="center"><button type="submit" class="d">Calculate selling price</button></div>
+
+        
+
+
+    </form></div>
+<p align="center" class="heading">{{ prediction_text }}</p>
+</body>
+</html>
