@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimer leprix de votre immobilier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+    <div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="form-l">
+    <div id="firstStep">
+        <div class="form-group">
+            <label for="typBien">Type de Bien à vendre *</label>
+            <select name="tpBien" id="typBien" class="form-control">
+                <option value="1">Appartement</option>
+                <option value="2">Maison</option>
+                <option value="Local">Local</option>
+                <option value="Terrain">Terrain</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" id="etp1">Suivant</button>
+    </div>
+    <div id="SecondStep">
+
+        <div class="form-group">
+            <label for="np">Nombre des pièces *</label>
+            <input type="number" name="np" id="np" class="form-control"> 
+        </div>        
+        <div class="form-group">
+            <label for="srb">Surface reelle Bati *</label>
+            <input type="number" name="srb" id="srb" class="form-control">
+        </div>
+        <div class="form-group srbm">
+            <label for="srbm">Surface terrain *</label>
+            <input type="number" name="srbm" id="srbm" class="form-control">
+        </div>
+        <button class="btn btn-primary" id="etp2">Suivant</button>
+    </div>
+    <div id="SecondStepOption2">
+        <div class="form-group">
+            <label for="st">Surface du Terrain *</label>
+            <input type="number" name="st" id="st" class="form-control"> 
+        </div>
+        <button class="btn btn-primary" id="etp2-1">Suivant</button>
+    </div>
+    <div id="StepThree">
+        <div class="form-group">
+            <label for="nd">Nombre des dépendances *</label>
+            <input type="number" name="nd" id="nd" class="form-control"> 
+        </div>
+        <button class="btn btn-primary" id="etp3">Terminer</button>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-3"></div>
+    <div id="popup" class="popup">
+        <div id="content" class="content">
+            <div id="close" class="close mr-3 mt-2">X</div>
+            <img src="{{ url_for('static', filename='img/think.gif') }}" class="gif_wiat" id="gif_wait" alt="">
+            <center>
+            <h4 class="pt-5">Bravo !</h4>
+            <h6 class="">Nous pouvons vendre votre immobilier au prix de:</h6>
+            <h5 id="price" class="ml-5"></h5>
+            </center>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>   
+</body>
+</html>

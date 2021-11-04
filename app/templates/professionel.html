@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimer le prix de votre immobilier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+    <div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="form-l">
+        <div id="firstSteps">
+            <div class="form-group">
+                <label for="typDeBien">Type de Bien à vendre *</label>
+                <select name="tpDeBien" id="typDeBien" class="form-control">
+                    <option value="1">Bâtiment</option>
+                    <option value="2">Centre commerciale</option>
+                    <option value="3">Lotissement</option>
+                    <option value="4">Terrains</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" id="etap1">Suivant</button>
+        </div>
+        <div id="secondSteps">
+            <div class="form-group">
+                <label for="nApp">Nombre des appartements *</label>
+                <input type="number" name="nApp" id="nApp" class="form-control">
+            </div>            
+            <div class="form-group">
+                <label for="npiece">Nombre des pièces *</label>
+                <input type="number" name="npiece" id="npiece" class="form-control">
+            </div>            
+            <div class="form-group">
+                <label for="ndep">Nombre des dépendances *</label>
+                <input type="number" name="ndep" id="ndep" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="srbati">Surface reelle Bati *</label>
+                <input type="number" name="srbati" id="srbati" class="form-control">
+            </div>          
+            <div class="form-group">
+                <label for="sutr">Surface Terrain *</label>
+                <input type="number" name="sutr" id="sutr" class="form-control">
+            </div>
+            <button class="btn btn-primary" id="etap3">Terminer</button>
+        </div>
+        <div id="secondSteps-2">
+            <div class="form-group">
+                <label for="nli">Nombre de local industriel . commercial ou assimilé *</label>
+                <input type="number" name="nli" id="nli" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="npieces">Nombre des pièces *</label>
+                <input type="number" name="npieces" id="npieces" class="form-control">
+            </div>  
+            <div class="form-group">
+                <label for="ndep">Nombre des dépendances *</label>
+                <input type="number" name="ndep" id="ndep" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="srbaticc">Surface reelle Bati *</label>
+                <input type="number" name="srbaticc" id="srbaticc" class="form-control">
+            </div>            
+            <div class="form-group">
+                <label for="sutr">Surface Terrain *</label>
+                <input type="number" name="sutr" id="sutr" class="form-control">
+            </div>
+            <button class="btn btn-primary" id="etap3">Terminer</button>
+        </div>
+        <div id="secondSteps-3">
+            <div class="form-group">
+                <label for="ndep">Nombre de Terrain *</label>
+                <input type="number" name="ndet" id="ndet" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="sutT">Surface Terrain *</label>
+                <input type="number" name="sutT" id="sutT" class="form-control">
+            </div>
+            <button class="btn btn-primary" id="etap3">Terminer</button>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-3"></div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>   
+</body>
+</html>

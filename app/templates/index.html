@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimer leprix de votre immobilier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+    <div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="form-l">
+    <form method="post" action="">
+    <div class="form-group">
+        <input type="checkbox" name="pro" id="pro" class=""/>
+        <label for="pro">Vous êtes un professionel ?</label>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" name="par" id="par" class=""/>
+        <label for="pro">Vous êtes un particulier ?</label>
+    </div>
+    </form>
+    </div>
+    </div>
+    <div class="col-md-3"></div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>   
+</body>
+</html>
